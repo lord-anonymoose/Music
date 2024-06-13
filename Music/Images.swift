@@ -25,5 +25,6 @@ let minVolumeImage = UIImage(systemName: "speaker.slash.fill")?.withConfiguratio
 let maxVolumeImage = UIImage(systemName: "speaker.wave.3.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 20, weight: .regular))
 
 // VoiceMemoViewController images
-let recordImage = UIImage(systemName: "srecord.circle.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 20, weight: .regular))
-let stopRecordImage = UIImage(systemName: "stop.circle.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 20, weight: .regular))
+let recordImage = UIImage(systemName: "button.programmable")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 50, weight: .regular))
+let stopRecordImage = UIImage(systemName: "stop.circle.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 50, weight: .regular))
+let waveformImage = UIImage(systemName: "waveform")
