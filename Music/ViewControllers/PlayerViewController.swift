@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import MediaPlayer
 
 class PlayerViewController: UIViewController {
 
@@ -105,6 +106,41 @@ class PlayerViewController: UIViewController {
         return label
     }()
     
+    private lazy var volumeSlider: MPVolumeView = {
+        let slider = MPVolumeView()
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        return slider
+    }()
+    
+    private lazy var minVolumeButton: UIButton = {
+        let button = UIButton()
+        
+        button.setImage(minVolumeImage, for: .normal)
+        button.tintColor = .systemOrange
+        
+        button.isUserInteractionEnabled = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var maxVolumeButton: UIButton = {
+        let button = UIButton()
+        
+        button.setImage(maxVolumeImage, for: .normal)
+        button.tintColor = .systemOrange
+        
+        button.isUserInteractionEnabled = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    
     
     // MARK: - Lifecycle
     
@@ -112,9 +148,11 @@ class PlayerViewController: UIViewController {
         setupUI()
         addSubviews()
         setupConstraints()
+        
         setCurrentSong()
         self.currentPosition += 1
         setCurrentSong()
+        
         super.viewDidLoad()
     }
 
@@ -134,8 +172,9 @@ class PlayerViewController: UIViewController {
     @objc private func stopButtonTapped(_ sender: Any) {
         if player.isPlaying {
             player.pause()
-            togglePlayButton()
             player.play(atTime: 0)
+            player.pause()
+            togglePlayButton()
         }
         else {
             print("Already stopped!")
@@ -149,6 +188,7 @@ class PlayerViewController: UIViewController {
             self.currentPosition -= 1
         }
         setCurrentSong()
+        player.play()
         togglePlayButton()
     }
     
@@ -159,26 +199,30 @@ class PlayerViewController: UIViewController {
             self.currentPosition += 1
         }
         setCurrentSong()
+        player.play()
         togglePlayButton()
     }
+    
     
     
     // MARK: - Private
     
     private func setupUI() {
         title = "Music Library"
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
     private func addSubviews() {
         view.addSubview(coverImageView)
         view.addSubview(playButton)
-        view.addSubview(stopButton
-        )
+        view.addSubview(stopButton)
         view.addSubview(previousButton)
         view.addSubview(nextButton)
         view.addSubview(titleLabel)
         view.addSubview(artistLabel)
+        view.addSubview(volumeSlider)
+        view.addSubview(minVolumeButton)
+        view.addSubview(maxVolumeButton)
     }
     
     private func setupConstraints() {
@@ -228,6 +272,23 @@ class PlayerViewController: UIViewController {
             nextButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor),
             nextButton.widthAnchor.constraint(equalToConstant: 100),
             nextButton.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        NSLayoutConstraint.activate([
+            minVolumeButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 15),
+            minVolumeButton.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            maxVolumeButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 15),
+            maxVolumeButton.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            volumeSlider.leadingAnchor.constraint(equalTo: minVolumeButton.trailingAnchor, constant: 20),
+            volumeSlider.trailingAnchor.constraint(equalTo: maxVolumeButton.leadingAnchor, constant: -20),
+            volumeSlider.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 15),
+            volumeSlider.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     
