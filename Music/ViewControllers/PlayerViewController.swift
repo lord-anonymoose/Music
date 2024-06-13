@@ -107,7 +107,8 @@ class PlayerViewController: UIViewController {
     }()
     
     private lazy var volumeSlider: MPVolumeView = {
-        let slider = MPVolumeView()
+        let slider = MPVolumeView(frame: view.bounds)
+        slider.showsVolumeSlider = true
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()
@@ -288,7 +289,7 @@ class PlayerViewController: UIViewController {
             volumeSlider.leadingAnchor.constraint(equalTo: minVolumeButton.trailingAnchor, constant: 20),
             volumeSlider.trailingAnchor.constraint(equalTo: maxVolumeButton.leadingAnchor, constant: -20),
             volumeSlider.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 15),
-            volumeSlider.heightAnchor.constraint(equalToConstant: 20)
+            volumeSlider.heightAnchor.constraint(equalToConstant: 20),
         ])
     }
     
