@@ -30,8 +30,7 @@ class PlayerViewController: UIViewController {
     private lazy var playButton: UIButton = {
         let button = UIButton()
         
-        let image = playImage
-        button.setImage(image, for: .normal)
+        button.setImage(playImage, for: .normal)
         button.tintColor = .systemOrange
 
         button.isUserInteractionEnabled = true
@@ -42,11 +41,24 @@ class PlayerViewController: UIViewController {
         return button
     }()
     
+    private lazy var stopButton: UIButton = {
+        let button = UIButton()
+        
+        button.setImage(stopImage, for: .normal)
+        button.tintColor = .systemOrange
+        
+        button.isUserInteractionEnabled = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(stopButtonTapped), for: .touchUpInside)
+        
+        
+        return button
+    }()
+    
     private lazy var previousButton: UIButton = {
         let button = UIButton()
         
-        let image = UIImage(systemName: "backward.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 25, weight: .regular))
-        button.setImage(image, for: .normal)
+        button.setImage(previousImage, for: .normal)
         button.tintColor = .systemOrange
         
         button.isUserInteractionEnabled = true
@@ -60,8 +72,7 @@ class PlayerViewController: UIViewController {
     private lazy var nextButton: UIButton = {
         let button = UIButton()
         
-        let image = UIImage(systemName: "forward.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 25, weight: .regular))
-        button.setImage(image, for: .normal)
+        button.setImage(nextImage, for: .normal)
         button.tintColor = .systemOrange
         
         button.isUserInteractionEnabled = true
@@ -120,9 +131,10 @@ class PlayerViewController: UIViewController {
         togglePlayButton()
     }
     
-    @objc private func stopButton(_ sender: Any) {
+    @objc private func stopButtonTapped(_ sender: Any) {
         if player.isPlaying {
             player.pause()
+            togglePlayButton()
             player.play(atTime: 0)
         }
         else {
@@ -161,6 +173,8 @@ class PlayerViewController: UIViewController {
     private func addSubviews() {
         view.addSubview(coverImageView)
         view.addSubview(playButton)
+        view.addSubview(stopButton
+        )
         view.addSubview(previousButton)
         view.addSubview(nextButton)
         view.addSubview(titleLabel)
@@ -169,6 +183,8 @@ class PlayerViewController: UIViewController {
     
     private func setupConstraints() {
         let safeAreaGuide = view.safeAreaLayoutGuide
+        let spacing = view.frame.size.width / 8
+        
         NSLayoutConstraint.activate([
             coverImageView.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
             coverImageView.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor, constant: -100),
@@ -189,21 +205,26 @@ class PlayerViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            playButton.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
-            playButton.topAnchor.constraint(equalTo: artistLabel.bottomAnchor, constant: 40),
-            playButton.widthAnchor.constraint(equalToConstant: 100),
-            playButton.heightAnchor.constraint(equalToConstant: 100)
-        ])
-        
-        NSLayoutConstraint.activate([
-            previousButton.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 20),
+            previousButton.centerXAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: spacing),
             previousButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor),
             previousButton.widthAnchor.constraint(equalToConstant: 100),
             previousButton.heightAnchor.constraint(equalToConstant: 100)
         ])
         
         NSLayoutConstraint.activate([
-            nextButton.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -20),
+            playButton.centerXAnchor.constraint(equalTo: previousButton.centerXAnchor, constant: spacing*2),
+            playButton.topAnchor.constraint(equalTo: artistLabel.bottomAnchor, constant: 40),
+            playButton.widthAnchor.constraint(equalToConstant: 100),
+            playButton.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        NSLayoutConstraint.activate([
+            stopButton.centerXAnchor.constraint(equalTo: playButton.centerXAnchor, constant: spacing*2),
+            stopButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            nextButton.centerXAnchor.constraint(equalTo: stopButton.centerXAnchor, constant: spacing*2),
             nextButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor),
             nextButton.widthAnchor.constraint(equalToConstant: 100),
             nextButton.heightAnchor.constraint(equalToConstant: 100)

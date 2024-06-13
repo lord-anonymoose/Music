@@ -19,6 +19,9 @@ let defaultArtwork = UIImage(named: "DefaultThumbnail")!
 
 let playImage = UIImage(systemName: "play.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 50, weight: .regular))
 let pauseImage = UIImage(systemName: "pause.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 50, weight: .regular))
+let stopImage = UIImage(systemName: "stop.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 50, weight: .regular))
+let previousImage = UIImage(systemName: "backward.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 50, weight: .regular))
+let nextImage = UIImage(systemName: "forward.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 50, weight: .regular))
 
 // Parsing mp3 file to get song data
 func getSong(url: URL) async throws -> Song {
