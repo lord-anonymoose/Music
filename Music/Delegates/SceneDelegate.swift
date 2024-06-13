@@ -17,8 +17,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                
         let window = UIWindow(windowScene: scene)
         
-        let viewController = PlayerViewController()
-        window.rootViewController = viewController
+        var controllers = [UIViewController]()
+        
+        // Adding Player
+        let playerViewController = PlayerViewController()
+        playerViewController.title = "Player"
+        playerViewController.tabBarItem = UITabBarItem(title: "Player", image: PlayerPageImage, tag: 0)
+        controllers.append(playerViewController)
+        
+        // Adding Voice Memo
+        let voiceMemoViewController = VoiceMemoViewController()
+        voiceMemoViewController.title = "Memo"
+        voiceMemoViewController.tabBarItem = UITabBarItem(title: "Memo", image: VoiceMemoPageImage, tag: 1)
+        controllers.append(voiceMemoViewController)
+        
+        // Making TabBar
+        let tabBarController = UITabBarController()
+        
+        tabBarController.viewControllers = controllers.map {
+            UINavigationController(rootViewController: $0)
+        }
+        tabBarController.selectedIndex = 0
+        
+        window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         self.window = window
     }

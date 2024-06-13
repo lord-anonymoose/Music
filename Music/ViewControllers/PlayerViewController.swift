@@ -108,8 +108,9 @@ class PlayerViewController: UIViewController {
     
     private lazy var volumeSlider: MPVolumeView = {
         let slider = MPVolumeView(frame: view.bounds)
-        //slider.showsVolumeSlider = true
+
         slider.translatesAutoresizingMaskIntoConstraints = false
+
         return slider
     }()
     
@@ -217,7 +218,7 @@ class PlayerViewController: UIViewController {
     // MARK: - Private
     
     private func setupUI() {
-        title = "Music Library"
+        //title = "Player"
         view.backgroundColor = .systemBackground
     }
     
@@ -240,7 +241,7 @@ class PlayerViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             coverImageView.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
-            coverImageView.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor, constant: -100),
+            coverImageView.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor, constant: -125),
             coverImageView.widthAnchor.constraint(equalTo: safeAreaGuide.widthAnchor, constant: -20),
             coverImageView.heightAnchor.constraint(equalTo: safeAreaGuide.widthAnchor, constant: -20)
         ])
