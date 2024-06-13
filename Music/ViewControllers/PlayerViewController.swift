@@ -108,7 +108,7 @@ class PlayerViewController: UIViewController {
     
     private lazy var volumeSlider: MPVolumeView = {
         let slider = MPVolumeView(frame: view.bounds)
-        slider.showsVolumeSlider = true
+        //slider.showsVolumeSlider = true
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()

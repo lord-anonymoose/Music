@@ -83,6 +83,7 @@
 				8E52637C2C1A65AA0058DD38 /* Media Library */,
 				8E52635A2C1A4C560058DD38 /* Info.plist */,
 				8E5263572C1A4C560058DD38 /* LaunchScreen.storyboard */,
+				8E5263552C1A4C560058DD38 /* Assets.xcassets */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -90,7 +91,6 @@
 		8E52637C2C1A65AA0058DD38 /* Media Library */ = {
 			isa = PBXGroup;
 			children = (
-				8E5263552C1A4C560058DD38 /* Assets.xcassets */,
 				8E5263722C1A64FC0058DD38 /* Adele - Rolling In The Deep.mp3 */,
 				8E52637D2C1AF50C0058DD38 /* OneRepublic & SeeB - Rich Love.mp3 */,
 				8E5263762C1A65280058DD38 /* Ed Sheeran - Perfect.mp3 */,
