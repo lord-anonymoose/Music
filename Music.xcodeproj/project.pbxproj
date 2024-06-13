@@ -19,6 +19,10 @@
 		8E52637B2C1A659C0058DD38 /* Katy Perry - I Kissed A Girl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E52637A2C1A659C0058DD38 /* Katy Perry - I Kissed A Girl.mp3 */; };
 		8E52637E2C1AF50C0058DD38 /* OneRepublic & SeeB - Rich Love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E52637D2C1AF50C0058DD38 /* OneRepublic & SeeB - Rich Love.mp3 */; };
 		8E5263802C1AF5120058DD38 /* Billie Eilish - Bad Guy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E52637F2C1AF5120058DD38 /* Billie Eilish - Bad Guy.mp3 */; };
+		8E5263822C1B04500058DD38 /* Infraction-Music-Take-A-Break-pr.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E5263812C1B04500058DD38 /* Infraction-Music-Take-A-Break-pr.mp3 */; };
+		8E5263842C1B04680058DD38 /* Oddvision-Media-Infraction-Music-Royal-Stage-water.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E5263832C1B04680058DD38 /* Oddvision-Media-Infraction-Music-Royal-Stage-water.mp3 */; };
+		8E5263862C1B04710058DD38 /* Infraction-Almost-Evil-pr.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E5263852C1B04710058DD38 /* Infraction-Almost-Evil-pr.mp3 */; };
+		8E5263882C1B04770058DD38 /* Infraction-Let-Me-Know-Main-Version-pr.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E5263872C1B04770058DD38 /* Infraction-Let-Me-Know-Main-Version-pr.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		8E52637A2C1A659C0058DD38 /* Katy Perry - I Kissed A Girl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Katy Perry - I Kissed A Girl.mp3"; sourceTree = "<group>"; };
 		8E52637D2C1AF50C0058DD38 /* OneRepublic & SeeB - Rich Love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "OneRepublic & SeeB - Rich Love.mp3"; sourceTree = "<group>"; };
 		8E52637F2C1AF5120058DD38 /* Billie Eilish - Bad Guy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Billie Eilish - Bad Guy.mp3"; sourceTree = "<group>"; };
+		8E5263812C1B04500058DD38 /* Infraction-Music-Take-A-Break-pr.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Infraction-Music-Take-A-Break-pr.mp3"; sourceTree = "<group>"; };
+		8E5263832C1B04680058DD38 /* Oddvision-Media-Infraction-Music-Royal-Stage-water.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Oddvision-Media-Infraction-Music-Royal-Stage-water.mp3"; sourceTree = "<group>"; };
+		8E5263852C1B04710058DD38 /* Infraction-Almost-Evil-pr.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Infraction-Almost-Evil-pr.mp3"; sourceTree = "<group>"; };
+		8E5263872C1B04770058DD38 /* Infraction-Let-Me-Know-Main-Version-pr.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Infraction-Let-Me-Know-Main-Version-pr.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,29 +76,49 @@
 		8E52634B2C1A4C540058DD38 /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				8E52634C2C1A4C540058DD38 /* AppDelegate.swift */,
-				8E52634E2C1A4C540058DD38 /* SceneDelegate.swift */,
-				8E5263502C1A4C540058DD38 /* PlayerViewController.swift */,
+				8E5263892C1B09ED0058DD38 /* Delegates */,
+				8E52638A2C1B0A4F0058DD38 /* ViewControllers */,
 				8E5263702C1A52BC0058DD38 /* Extensions.swift */,
 				8E5263602C1A4E8E0058DD38 /* Content.swift */,
-				8E5263552C1A4C560058DD38 /* Assets.xcassets */,
-				8E5263572C1A4C560058DD38 /* LaunchScreen.storyboard */,
-				8E52637C2C1A65AA0058DD38 /* Library */,
+				8E52637C2C1A65AA0058DD38 /* Media Library */,
 				8E52635A2C1A4C560058DD38 /* Info.plist */,
+				8E5263572C1A4C560058DD38 /* LaunchScreen.storyboard */,
 			);
 			path = Music;
 			sourceTree = "<group>";
 		};
-		8E52637C2C1A65AA0058DD38 /* Library */ = {
+		8E52637C2C1A65AA0058DD38 /* Media Library */ = {
 			isa = PBXGroup;
 			children = (
+				8E5263552C1A4C560058DD38 /* Assets.xcassets */,
 				8E5263722C1A64FC0058DD38 /* Adele - Rolling In The Deep.mp3 */,
 				8E52637D2C1AF50C0058DD38 /* OneRepublic & SeeB - Rich Love.mp3 */,
 				8E5263762C1A65280058DD38 /* Ed Sheeran - Perfect.mp3 */,
 				8E52637F2C1AF5120058DD38 /* Billie Eilish - Bad Guy.mp3 */,
+				8E5263832C1B04680058DD38 /* Oddvision-Media-Infraction-Music-Royal-Stage-water.mp3 */,
+				8E5263852C1B04710058DD38 /* Infraction-Almost-Evil-pr.mp3 */,
+				8E5263872C1B04770058DD38 /* Infraction-Let-Me-Know-Main-Version-pr.mp3 */,
+				8E5263812C1B04500058DD38 /* Infraction-Music-Take-A-Break-pr.mp3 */,
 				8E52637A2C1A659C0058DD38 /* Katy Perry - I Kissed A Girl.mp3 */,
 			);
-			path = Library;
+			path = "Media Library";
+			sourceTree = "<group>";
+		};
+		8E5263892C1B09ED0058DD38 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				8E52634C2C1A4C540058DD38 /* AppDelegate.swift */,
+				8E52634E2C1A4C540058DD38 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		8E52638A2C1B0A4F0058DD38 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E5263502C1A4C540058DD38 /* PlayerViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,12 +180,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E5263562C1A4C560058DD38 /* Assets.xcassets in Resources */,
+				8E5263862C1B04710058DD38 /* Infraction-Almost-Evil-pr.mp3 in Resources */,
 				8E5263772C1A65280058DD38 /* Ed Sheeran - Perfect.mp3 in Resources */,
 				8E52637B2C1A659C0058DD38 /* Katy Perry - I Kissed A Girl.mp3 in Resources */,
+				8E5263882C1B04770058DD38 /* Infraction-Let-Me-Know-Main-Version-pr.mp3 in Resources */,
 				8E5263802C1AF5120058DD38 /* Billie Eilish - Bad Guy.mp3 in Resources */,
 				8E5263592C1A4C560058DD38 /* Base in Resources */,
 				8E52637E2C1AF50C0058DD38 /* OneRepublic & SeeB - Rich Love.mp3 in Resources */,
+				8E5263822C1B04500058DD38 /* Infraction-Music-Take-A-Break-pr.mp3 in Resources */,
 				8E5263732C1A64FC0058DD38 /* Adele - Rolling In The Deep.mp3 in Resources */,
+				8E5263842C1B04680058DD38 /* Oddvision-Media-Infraction-Music-Royal-Stage-water.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
