@@ -122,7 +122,7 @@ class PlayerViewController: UIViewController {
         button.isUserInteractionEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(minVolumeButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -136,7 +136,7 @@ class PlayerViewController: UIViewController {
         button.isUserInteractionEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(maxVolumeButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -202,6 +202,14 @@ class PlayerViewController: UIViewController {
         setCurrentSong()
         player.play()
         togglePlayButton()
+    }
+    
+    @objc private func minVolumeButtonTapped(_ sender: Any) {
+        MPVolumeView.setVolume(0.0)
+    }
+    
+    @objc private func maxVolumeButtonTapped(_ sender: Any) {
+        MPVolumeView.setVolume(1.0)
     }
     
     

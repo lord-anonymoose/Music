@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import UIKit
+import MediaPlayer
 
 struct Song {
     var title: String
@@ -59,4 +60,15 @@ func getSong(url: URL) async throws -> Song {
     }
 
     return Song(title: songName, artist: artistName, artwork: artworkImage)
+}
+
+extension MPVolumeView {
+  static func setVolume(_ volume: Float) {
+    let volumeView = MPVolumeView()
+    let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
+
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
+      slider?.value = volume
+    }
+  }
 }
