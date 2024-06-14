@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
-class PlayerViewController: UIViewController {
+class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
 
     var player = AVAudioPlayer()
     
@@ -183,26 +183,12 @@ class PlayerViewController: UIViewController {
         }
     }
     
-    @objc private func previousButtonTapped(_ sender: Any) {
-        if self.currentPosition == 0 {
-            self.currentPosition = musicLibrary.count - 1
-        } else {
-            self.currentPosition -= 1
-        }
-        setCurrentSong()
-        player.play()
-        togglePlayButton()
+    @objc private func nextButtonTapped(_ sender: Any) {
+        playNextSong(reversed: false)
     }
     
-    @objc private func nextButtonTapped(_ sender: Any) {
-        if self.currentPosition == musicLibrary.count - 1 {
-            self.currentPosition = 0
-        } else {
-            self.currentPosition += 1
-        }
-        setCurrentSong()
-        player.play()
-        togglePlayButton()
+    @objc private func previousButtonTapped(_ sender: Any) {
+        playNextSong(reversed: true)
     }
     
     @objc private func minVolumeButtonTapped(_ sender: Any) {
@@ -238,6 +224,7 @@ class PlayerViewController: UIViewController {
     private func setupConstraints() {
         let safeAreaGuide = view.safeAreaLayoutGuide
         let spacing = view.frame.size.width / 8
+        
         
         NSLayoutConstraint.activate([
             coverImageView.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
@@ -309,7 +296,6 @@ class PlayerViewController: UIViewController {
                 coverImageView.image = currentSong.artwork
                 titleLabel.text = currentSong.title
                 artistLabel.text = currentSong.artist
-                print(currentSong)
             } catch {
                 print("Failed to load song: \(error)")
             }
@@ -330,6 +316,29 @@ class PlayerViewController: UIViewController {
         } else {
             playButton.setImage(playImage, for: .normal)
         }
+    }
+    
+    private func playNextSong(reversed: Bool) {
+        if reversed {
+            if self.currentPosition == musicLibrary.count - 1 {
+                self.currentPosition = 0
+            } else {
+                self.currentPosition += 1
+            }
+        } else {
+            if self.currentPosition == 0 {
+                self.currentPosition = musicLibrary.count - 1
+            } else {
+                self.currentPosition -= 1
+            }
+        }
+        setCurrentSong()
+        player.play()
+        togglePlayButton()
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        playNextSong(reversed: false)
     }
 }
 

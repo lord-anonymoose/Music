@@ -62,3 +62,17 @@ extension MPVolumeView {
     }
   }
 }
+
+func getDocumentsDirectory() -> URL
+{
+    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let documentsDirectory = paths[0]
+    return documentsDirectory
+}
+
+func getFileUrl() -> URL
+{
+    let filename = "myRecording.m4a"
+    let filePath = getDocumentsDirectory().appendingPathComponent(filename)
+return filePath
+}
