@@ -152,8 +152,6 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
         setupConstraints()
         
         setCurrentSong()
-        self.currentPosition += 1
-        setCurrentSong()
         
         super.viewDidLoad()
     }
@@ -204,7 +202,6 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     // MARK: - Private
     
     private func setupUI() {
-        //title = "Player"
         view.backgroundColor = .systemBackground
     }
     
@@ -303,6 +300,7 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
         
         do {
             player = try AVAudioPlayer(contentsOf: musicLibrary[currentPosition])
+            player.delegate = self
             player.prepareToPlay()
         }
         catch {
@@ -338,6 +336,7 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        print("recording finished")
         playNextSong(reversed: false)
     }
 }
