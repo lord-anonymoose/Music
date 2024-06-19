@@ -83,7 +83,6 @@ class VoiceMemoViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
     // MARK: - Actions
     
     @objc private func recordButtonTapped(_ sender: Any) {
-        print("\(checkRecordPermission())")
         if checkRecordPermission() {
             if isRecording {
                 stopRecording()
@@ -150,14 +149,12 @@ class VoiceMemoViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
     }
     
     private func checkRecordPermission() -> Bool {
-        print("Checking record permission")
         let recordPermission = AVAudioApplication.shared.recordPermission
         
         var canRecord = false
         
         switch recordPermission {
         case .undetermined:
-            print("Recording permission has not been determined yet.")
             canRecord = self.requestRecordingPermission()
         case .denied:
             print("Recording permission has been denied.")
@@ -215,6 +212,8 @@ class VoiceMemoViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
         imageView.tintColor = .systemRed
         recordButton.tintColor = .systemRed
         recordButton.setImage(stopRecordImage, for: .normal)
+        playButton.isUserInteractionEnabled = false
+        playButton.tintColor = .systemGray
         
         audioRecorder = AVAudioRecorder()
         let session = AVAudioSession.sharedInstance()
@@ -248,6 +247,9 @@ class VoiceMemoViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
         audioRecorder?.stop()
         audioRecorder = nil
         
+        playButton.isUserInteractionEnabled = true
+        playButton.tintColor = .systemOrange
+        
         let session = AVAudioSession.sharedInstance()
         do {
             try session.setCategory(.playback)
@@ -264,7 +266,8 @@ class VoiceMemoViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
         isPlaying = true
         
         do {
-            print("\(getFileUrl())")
+            recordButton.isUserInteractionEnabled = false
+            recordButton.tintColor = .systemGray
             player = try AVAudioPlayer(contentsOf: getFileUrl())
             player.prepareToPlay()
             player.delegate = self
@@ -278,6 +281,8 @@ class VoiceMemoViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
     private func stopPlaying() {
         playButton.setImage(playImage, for: .normal)
         isPlaying = false
+        recordButton.isUserInteractionEnabled = true
+        recordButton.tintColor = .systemOrange
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
